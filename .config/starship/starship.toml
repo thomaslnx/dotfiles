@@ -217,7 +217,7 @@ style = "bold red"
 [lua]
 symbol = '🌙 '
 format = "[ $symbol($version)]($style)"
-version_format = "$v{major}.${minor}"
+version_format = "v${major}.${minor}"
 detect_extensions = ["lua"]
 detect_files = [".lua-version"]
 detect_folders = ["lua"]
