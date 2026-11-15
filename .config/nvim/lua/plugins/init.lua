@@ -30,53 +30,6 @@ return {
     opts = {},
   },
 
-  -- Treesetter needed for the correction working of nvim-ts-autotag
-  {
-    "nvim-treesitter/nvim-treesitter",
-    lazy = false,
-    build = ":TSUpdate",
-    -- event = { "BufReadPost", "BufNewFile" },
-
-    opts = {
-      ensure_installed = {
-        "vim",
-        "lua",
-        "vimdoc",
-
-        "html",
-        "css",
-        "scss",
-
-        "javascript",
-        "typescript",
-        "tsx",
-        "jsdoc",
-
-        "json",
-        "yaml",
-        "toml",
-
-        "bash",
-        "dockerfile",
-        "regex",
-
-        "markdown",
-        "markdown_inline",
-
-        "rust",
-        "c",
-        "cpp",
-      },
-
-      highlight = {
-        enable = true,
-      },
-
-      indent = {
-        enable = true,
-      },
-    },
-  },
   -- Rust plugin for code completion
   -- Rust: handles its own lazy-loading: codelld is autodetected from the PATH
   {
@@ -105,46 +58,6 @@ return {
         }
       end
     end,
-  },
-
-  -- ** Commentend because was moved for its ouwn file ** --
-  -- {
-  --   "mfussenegger/nvim-dap",
-  --   config = function()
-  --     local dap, dapui = require "dap", require "dapui"
-  --     dap.listeners.before.attach.dapui_config = function()
-  --       dapui.open()
-  --     end
-  --     dap.listeners.before.launch.dapui_config = function()
-  --       dapui.open()
-  --     end
-  --     dap.listeners.before.event_terminated.dapui_config = function()
-  --       dapui.close()
-  --     end
-  --     dap.listeners.before.event_exited.dapui_config = function()
-  --       dapui.close()
-  --     end
-  --   end,
-  -- },
-  -- ** Commented because was moved for its own file ** --
-
-  -- ** Commentend because was moved for its own file alongside with nvim-dap ** --
-  -- {
-  --   "rcarriga/nvim-dap-ui",
-  --   dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-  --   config = function()
-  --     require("dapui").setup()
-  --   end,
-  -- },
-  -- ** Commentend because was moved for its own file alongside with nvim-dap ** --
-
-  -- Cargo.toml: crates.nvim's built-in LSP (replaces the deprecated cmp source)
-  {
-    "saecki/crates.nvim",
-    event = { "BufRead Cargo.toml" },
-    opts = {
-      lsp = { enabled = true, actions = true, completion = true, hover = true },
-    },
   },
 
   {
