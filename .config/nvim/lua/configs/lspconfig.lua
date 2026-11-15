@@ -74,6 +74,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.diagnostic.jump { count = 1, float = true }
     end, opts)
 
+    -- Custom configuration for "K" hover output window
+    vim.keymap.set("n", "K", function()
+      vim.lsp.buf.hover {
+        max_height = 30,
+        max_width = 100,
+        border = "rounded",
+      }
+    end, opts)
+
     -- Inlay hints (rust-analyzer, etc), only if the server supports them
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if client and client:supports_method("textDocument/inlayHint", args.buf) then
