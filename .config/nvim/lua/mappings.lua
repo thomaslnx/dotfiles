@@ -7,6 +7,9 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
+-- Close the quickfix window (references, diagnostics lists, etc)
+map("n", "<leader>qc", "<cmd>cclose<cr>", { desc = "Close quickfix" })
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 -- Nvim DAP
