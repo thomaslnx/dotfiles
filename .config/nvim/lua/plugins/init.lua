@@ -28,16 +28,6 @@ return {
     },
 
     opts = {},
-    -- ft = {
-    --   "javascript",
-    --   "javascriptreact",
-    --   "typescript",
-    --   "typescriptreact",
-    --   "html",
-    -- },
-    -- config = function()
-    --  require("nvim-ts-autotag").setup()
-    -- end,
   },
 
   -- Treesetter needed for the correction working of nvim-ts-autotag
@@ -85,10 +75,6 @@ return {
       indent = {
         enable = true,
       },
-
-      -- autotag = {
-      --  enable = true,
-      -- },
     },
   },
   -- Rust plugin for code completion
@@ -109,7 +95,7 @@ return {
               require("cmp_nvim_lsp").default_capabilities()
             ),
             default_settings = {
-              ["rust_analyzer"] = {
+              ["rust-analyzer"] = {
                 check = { command = "clippy" },
                 cargo = { allFeatures = true },
                 procMacro = { enable = true },
@@ -119,73 +105,38 @@ return {
         }
       end
     end,
-    -- All config bellow commented to fill new config
-    -- version = "^9.0.2", -- Recommended
-    -- ft = "rust",
-    -- init = function()
-    --  local cfg = require "rustaceanvim.config"
-    --  local extension_path = vim.fn.stdpath "data" .. "/mason/packages/codelldb/extension/"
-    --  local codelldb_path = extension_path .. "adapter/codelldb"
-    --  local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
-
-    --  if vim.fn.filereadable(codelldb_path) == 1 then
-    --    vim.g.rustaceanvim = {
-    --      dap = {
-    --        adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
-    --      },
-    --    }
-    --  else
-    --    vim.g.rustaceanvim = {}
-    --  end
-    --end,
   },
 
-  -- Removed, because it formatted twice alongside conform.
+  -- ** Commentend because was moved for its ouwn file ** --
   -- {
-  --  "rust-lang/rust.vim",
-  --  ft = "rust",
-  --  init = function()
-  --    vim.g.rustfmt_autosave = 1
+  --   "mfussenegger/nvim-dap",
+  --   config = function()
+  --     local dap, dapui = require "dap", require "dapui"
+  --     dap.listeners.before.attach.dapui_config = function()
+  --       dapui.open()
+  --     end
+  --     dap.listeners.before.launch.dapui_config = function()
+  --       dapui.open()
+  --     end
+  --     dap.listeners.before.event_terminated.dapui_config = function()
+  --       dapui.close()
+  --     end
+  --     dap.listeners.before.event_exited.dapui_config = function()
+  --       dapui.close()
+  --     end
   --   end,
   -- },
+  -- ** Commented because was moved for its own file ** --
 
-  {
-    "mfussenegger/nvim-dap",
-    config = function()
-      local dap, dapui = require "dap", require "dapui"
-      dap.listeners.before.attach.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.launch.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated.dapui_config = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited.dapui_config = function()
-        dapui.close()
-      end
-    end,
-  },
-
-  {
-    "rcarriga/nvim-dap-ui",
-    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-    config = function()
-      require("dapui").setup()
-    end,
-  },
-
-  -- Removed, because it never loaded under defaults.lazy = true.
-  -- You install codelldb once by hand (step 6 below).
+  -- ** Commentend because was moved for its own file alongside with nvim-dap ** --
   -- {
-  --   "jay-babu/mason-nvim-dap.nvim",
-  --   dependencies = { "mason-org/mason.nvim", "mfussenegger/nvim-dap" },
-  --   opts = {
-  --     ensure_installed = { "codelldb" }, -- 👈 this auto-installs codelldb, typescript-languge-server
-  --     automatic_installation = true,
-  --   },
+  --   "rcarriga/nvim-dap-ui",
+  --   dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+  --   config = function()
+  --     require("dapui").setup()
+  --   end,
   -- },
+  -- ** Commentend because was moved for its own file alongside with nvim-dap ** --
 
   -- Cargo.toml: crates.nvim's built-in LSP (replaces the deprecated cmp source)
   {
@@ -194,13 +145,6 @@ return {
     opts = {
       lsp = { enabled = true, actions = true, completion = true, hover = true },
     },
-    -- ft = { "toml" },
-    -- config = function()
-    --   require("crates").setup {}
-    --   require("cmp").setup.buffer {
-    --     sources = { { name = "crates" } },
-    --   }
-    -- end,
   },
 
   {
